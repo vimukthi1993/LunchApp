@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="name">Outlet Name</label>
+        <input #name="ngModel" [(ngModel)]="outlet.name" name="name" id="name" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          Name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Outlet Phone Number</label>
+        <input #phone="ngModel" [(ngModel)]="outlet.phone" name="phone" id="phone" type="number" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+          <div *ngIf="phone.errors.required">Phone number is required!</div>
+          <div *ngIf="phone.errors.phone">Phone number not valid!</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ownerName">Owner Name</label>
+        <input #ownerName="ngModel" [(ngModel)]="outlet.ownerName" name="ownerName" id="ownerName" type="text" class="form-control"
+          required>
+        <div class="alert alert-danger" *ngIf="ownerName.touched && ownerName.invalid">
+          Owner Name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ownerPhone">Owner Phone Number</label>
+        <input #ownerPhone="ngModel" [(ngModel)]="outlet.ownerPhone" name="ownerPhone" id="ownerPhone" type="number" class="form-control"
+          required>
+        <div class="alert alert-danger" *ngIf="ownerPhone.touched && ownerPhone.invalid">
+          <div *ngIf="ownerPhone.errors.required">Phone number is required!</div>
+          <div *ngIf="ownerPhone.errors.phone">Phone number not valid!</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address1">Outlet Address 1</label>
+        <input #address1="ngModel" [(ngModel)]="outlet.address1" name="address1" id="address1" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="address1.touched && address1.invalid">
+          Address is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address2">Outlet Address 2</label>
+        <input #address2="ngModel" [(ngModel)]="outlet.address2" name="address2" id="address2" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="address2.touched && address2.invalid">
+          Address is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address3">Outlet Address 3</label>
+        <input #address3="ngModel" [(ngModel)]="outlet.address3" name="address3" id="address3" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="address3.touched && address3.invalid">
+          Address is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input #longitude="ngModel" [(ngModel)]="outlet.longitude" name="longitude" id="longitude" type="number" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="longitude.touched && longitude.invalid">
+            Longitude is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input #latitude="ngModel" [(ngModel)]="outlet.latitude" name="latitude" id="latitude" type="number" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="latitude.touched && latitude.invalid">
+            Latitude is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input #imageUrl="ngModel" [(ngModel)]="outlet.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required
+          url>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+          <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
+          <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
+        </div>
+      </div>
+      <button class="btn btn-primary">Save</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="outlet.name" class="card" style="width: 20rem;">
+      <img class="card-img-top" [src]="outlet.imageUrl" *ngIf="outlet.imageUrl">
+      <div class="card-body">
+        <h4 class="card-title">{{ outlet.name }}</h4>
+        <p class="card-text">{{ outlet.address3 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
